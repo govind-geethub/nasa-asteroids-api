@@ -12,5 +12,6 @@ func main() {
 		log.Fatalf("failed to fetch data")
 	}
 
+	InitStorage(asteroids)
 	fmt.Printf("Fetched %d asteroids from NASA. \n", len(asteroids))
 }
