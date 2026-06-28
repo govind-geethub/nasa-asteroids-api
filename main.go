@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 )
 
 func main() {
@@ -31,4 +32,7 @@ func main() {
 
 	var updatedAsteroids = GetAsteroids()
 	fmt.Printf("after the 1st asteroid deletion number of asteroids are : %d", len(updatedAsteroids))
+
+	http.HandleFunc("/asteroids", GetAsteroidHandler)
+	http.ListenAndServe(":8080", nil)
 }
