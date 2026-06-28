@@ -11,8 +11,20 @@ func InitStorage(data []Asteroid) {
 	fmt.Printf("Success! the data has been stored. \n")
 }
 
-func GetAsteroids() []Asteroid {
-	return AsteroidDB
+func GetAsteroids(offset int, limit int) []Asteroid {
+
+	// if offset has passed the last asteroid
+	if offset >= len(AsteroidDB) {
+		return []Asteroid{} // empty slice
+	}
+
+	end := offset + limit
+	if end > len(AsteroidDB) {
+		end = len(AsteroidDB)
+	}
+
+	// return the slice window
+	return AsteroidDB[offset:end]
 }
 
 func CreateAsteroid(newAsteroid Asteroid) {

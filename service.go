@@ -6,10 +6,10 @@ import (
 )
 
 type Asteroid struct {
-	ID                 string  `json:"id"`
-	Name               string  `json:"name"`
-	AbsoluteMagnitutde float64 `json:"absolute_magnitude_h"`
-	IsHazardous        bool    `json:"is_potentially_hazardous_asteroid"`
+	ID                             string  `json:"id"`
+	Name                           string  `json:"name"`
+	AbsoluteMagnitudeH             float64 `json:"absolute_magnitude_h"`
+	IsPotentiallyHazardousAsteroid bool    `json:"is_potentially_hazardous_asteroid"`
 }
 
 type NeoResponse struct {
