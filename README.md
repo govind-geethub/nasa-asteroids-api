@@ -1,6 +1,6 @@
 # 🌌 NASA Space Project
 
-A high-performance, decoupled REST API microservice built in Go. It connects directly to official NASA Open APIs to fetch and track Near-Earth Objects (asteroids), leveraging a production-grade relational database setup to handle structured data manipulation and efficient network pagination under heavy loads.
+A simple, fast space-tracking API built with Go and PostgreSQL. It automatically fetches live asteroid data from NASA, stores it permanently on your device, and lets you add or delete items in real time.
 
 ## ✨ Features
 * **Live NASA Data Sync:** Reaches across the internet to parse, normalize, and inject real-time cosmic payload data structures.
