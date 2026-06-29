@@ -13,14 +13,25 @@ func InitStorage(data []Asteroid) {
 
 func GetAsteroids(offset int, limit int, filterHazardous bool, hazardousValue bool) []Asteroid {
 
-	sourceData := AsteroidDB
 	if filterHazardous {
-		sourceData = FilterAsteroids(hazardousValue)
+		sourceData := FilterAsteroids(hazardousValue)
+
+		// if offset has passed the last asteroid
+		if offset >= len(sourceData) {
+			return []Asteroid{} // empty slice
+		}
+
+		end := offset + limit
+		if end > len(sourceData) {
+			end = len(sourceData)
+		}
+
+		// return the slice window
+		return sourceData[offset:end]
 	}
 
-	// if offset has passed the last asteroid
 	if offset >= len(AsteroidDB) {
-		return []Asteroid{} // empty slice
+		return []Asteroid{}
 	}
 
 	end := offset + limit
@@ -28,8 +39,7 @@ func GetAsteroids(offset int, limit int, filterHazardous bool, hazardousValue bo
 		end = len(AsteroidDB)
 	}
 
-	// return the slice window
-	return sourceData[offset:end]
+	return AsteroidDB[offset:end]
 }
 
 func CreateAsteroid(newAsteroid Asteroid) {

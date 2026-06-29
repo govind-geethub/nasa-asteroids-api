@@ -74,9 +74,9 @@ func DeleteAsteroidHandler(w http.ResponseWriter, r *http.Request) {
 
 	// extracting the asteroid ID to delete
 	if targetID == "" {
-		w.Header().Set("Content-Type", "applications/json")
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(`{"error": "Missing required 'id' query parameter}`))
+		w.Write([]byte(`{"error": "Missing required 'id' query parameter"}`))
 		return
 	}
 

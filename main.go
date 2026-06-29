@@ -29,19 +29,15 @@ func main() {
 	var savedAsteroids = GetAsteroids(0, 100, false, false)
 	fmt.Printf("number of saved asteroids are : %d \n", len(savedAsteroids))
 
-	// create test
-	var customAsteroid Asteroid
-	CreateAsteroid((customAsteroid))
-
 	var newAsteroids = GetAsteroids(0, 100, false, false)
 	fmt.Printf("after new asteroid add total asteroids are : %d \n", len(newAsteroids))
 
 	// delete test
-	TargetID := newAsteroids[0].ID
-	DeleteAsteroid(TargetID)
+	// TargetID := newAsteroids[0].ID
+	// DeleteAsteroid(TargetID)
 
-	var updatedAsteroids = GetAsteroids(0, 100, false, false)
-	fmt.Printf("after the 1st asteroid deletion number of asteroids are : %d \n", len(updatedAsteroids))
+	// var updatedAsteroids = GetAsteroids(0, 100, false, false)
+	// fmt.Printf("after the 1st asteroid deletion number of asteroids are : %d \n", len(updatedAsteroids))
 
 	// http.HandleFunc("/asteroids", GetAsteroidHandler)
 	// http.HandleFunc("/asteroids/create", CreateAsteroidHandler)
@@ -51,6 +47,6 @@ func main() {
 	http.HandleFunc("/asteroids/create", CreateAsteroidHandler)
 	http.HandleFunc("/asteroids/delete", DeleteAsteroidHandler)
 
-	log.Println("Server starting on Port:8080...")
+	log.Println("Server starting on Port : 8080...")
 	http.ListenAndServe(":8080", nil)
 }
