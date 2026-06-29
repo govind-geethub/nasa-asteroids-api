@@ -11,7 +11,12 @@ func InitStorage(data []Asteroid) {
 	fmt.Printf("Success! the data has been stored. \n")
 }
 
-func GetAsteroids(offset int, limit int) []Asteroid {
+func GetAsteroids(offset int, limit int, filterHazardous bool, hazardousValue bool) []Asteroid {
+
+	sourceData := AsteroidDB
+	if filterHazardous {
+		sourceData = FilterAsteroids(hazardousValue)
+	}
 
 	// if offset has passed the last asteroid
 	if offset >= len(AsteroidDB) {
@@ -24,7 +29,7 @@ func GetAsteroids(offset int, limit int) []Asteroid {
 	}
 
 	// return the slice window
-	return AsteroidDB[offset:end]
+	return sourceData[offset:end]
 }
 
 func CreateAsteroid(newAsteroid Asteroid) {
@@ -38,4 +43,14 @@ func DeleteAsteroid(id string) {
 			return
 		}
 	}
+}
+
+func FilterAsteroids(hazardous bool) []Asteroid {
+	var filtered []Asteroid
+	for _, asteroid := range AsteroidDB {
+		if asteroid.IsPotentiallyHazardousAsteroid == hazardous {
+			filtered = append(filtered, asteroid)
+		}
+	}
+	return filtered
 }
