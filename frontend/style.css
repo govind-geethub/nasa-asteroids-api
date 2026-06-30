@@ -1,0 +1,162 @@
+:root {
+    --bg-color: #0b0f19;
+    --card-bg: #161b26;
+    --text-main: #f0f4f8;
+    --text-muted: #9aa5b1;
+    --accent-safe: #48bb78;
+    --accent-hazard: #f56565;
+    --btn-bg: #3182ce;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 { 
+    margin-bottom: 5px; 
+    color: #fff; 
+}
+
+p { 
+    color: var(--text-muted); 
+    margin-top: 0; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Form Styling */
+.form-section {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    border: 1px solid #2d3748;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+}
+
+input, select {
+    background-color: #2d3748;
+    border: 1px solid #4a5568;
+    padding: 10px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+}
+
+button {
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+button:hover { 
+    background-color: #2b6cb0; 
+}
+
+/* Grid Display Styling */
+.asteroid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #2d3748;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.badge.safe { 
+    background-color: rgba(72,187,120,0.2); 
+    color: var(--accent-safe); 
+}
+
+.badge.hazard { 
+    background-color: rgba(245,101,101,0.2); 
+    color: var(--accent-hazard); 
+}
+
+.card-detail {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 5px 0;
+}
+
+.delete-btn {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid #4a5568;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: var(--accent-hazard);
+    color: white;
+    border-color: var(--accent-hazard);
+}

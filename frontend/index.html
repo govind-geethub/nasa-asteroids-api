@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌌 NASA Space Tracker Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🌌 Cosmic Asteroid Tracker</h1>
+            <p>Live streaming relational space payloads from local PostgreSQL storage</p>
+        </header>
+
+        <section class="form-section">
+            <h3>➕ Log New Astronomical Object</h3>
+            <form id="asteroidForm" class="form-grid">
+                <div class="form-group">
+                    <label for="astId">Asteroid ID</label>
+                    <input type="text" id="astId" required placeholder="e.g. 432109">
+                </div>
+                <div class="form-group">
+                    <label for="astName">Object Name</label>
+                    <input type="text" id="astName" required placeholder="e.g. Apophis-9">
+                </div>
+                <div class="form-group">
+                    <label for="astMag">Absolute Magnitude (H)</label>
+                    <input type="number" id="astMag" step="0.01" required placeholder="e.g. 22.4">
+                </div>
+                <div class="form-group">
+                    <label for="astHazard">Hazard Status</label>
+                    <select id="astHazard">
+                        <option value="false">Safe Orbit</option>
+                        <option value="true">Potentially Hazardous</option>
+                    </select>
+                </div>
+                <button type="submit">Deploy to DB</button>
+            </form>
+        </section>
+
+        <main>
+            <h3>☄️ Current Tracking Inventory</h3>
+            <div id="asteroidGrid" class="asteroid-grid">
+                </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

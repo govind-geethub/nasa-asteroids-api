@@ -6,7 +6,24 @@ import (
 	"strconv"
 )
 
+// enableCORS sets up the required security headers for browser-to-backend communication
+func enableCORS(w http.ResponseWriter, r *http.Request) bool {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+	// If the browser is just asking for permission configurations (Preflight OPTIONS request)
+	if r.Method == "OPTIONS" {
+		w.WriteHeader(http.StatusOK)
+		return true
+	}
+	return false
+}
+
 func GetAsteroidHandler(w http.ResponseWriter, r *http.Request) {
+	if enableCORS(w, r) {
+		return
+	} // Handle preflight check
 
 	queryParams := r.URL.Query()
 
@@ -42,8 +59,11 @@ func GetAsteroidHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateAsteroidHandler(w http.ResponseWriter, r *http.Request) {
+	if enableCORS(w, r) {
+		return
+	} // Handle preflight check
 
-	// create for post nuliffies for other http requests
+	// create for post nullifies for other http requests
 	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		return
@@ -63,6 +83,10 @@ func CreateAsteroidHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteAsteroidHandler(w http.ResponseWriter, r *http.Request) {
+	if enableCORS(w, r) {
+		return
+	} // Handle preflight check
+
 	// only DELETE method will pass
 	if r.Method != http.MethodDelete {
 		w.WriteHeader(http.StatusMethodNotAllowed)
