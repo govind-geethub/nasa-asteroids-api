@@ -5,10 +5,16 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
 
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("No .env file found in the system")
+	}
 	// initialising postgres connection pool first
 	InitStorage()
 	defer DB.Close() // safely closes database connection when project stops

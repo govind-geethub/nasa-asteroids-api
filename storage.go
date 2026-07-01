@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -14,7 +15,16 @@ var DB *pgxpool.Pool
 
 // InitStorage hooks the backend to postgres directly
 func InitStorage() {
-	connStr := "postgres://postgres:Avin14AG07@localhost:5432/nasa_space_project"
+
+	// safely pulling the required variables out of the system
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	user := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
+	dbname := os.Getenv("DB_NAME")
+
+	// constructing the connection using the above variables
+	connStr := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", user, password, host, port, dbname)
 
 	var err error
 	DB, err = pgxpool.New(context.Background(), connStr)
@@ -28,7 +38,7 @@ func InitStorage() {
 		log.Fatalf("Database ping failed: %v \n", err)
 	}
 
-	fmt.Println("Success! Connected to the PostgreSQL.\n")
+	fmt.Println("Success! Connected to the PostgreSQL.")
 }
 
 // inserts a new asteroid row into the database
